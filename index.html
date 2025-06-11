@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Keterangan DPMPTSP</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2.5cm 2cm;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.2;
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: black;
+        }
+        
+        .container {
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: table;
+            width: 100%;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #000;
+            padding-bottom: 15px;
+        }
+        
+        .header-logo {
+            display: table-cell;
+            width: 100px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .logo-placeholder {
+            width: 80px;
+            height: 95px;
+            border: 2px solid #000;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            font-size: 8pt;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .header-text {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            padding-left: 20px;
+        }
+        
+        .header-text h1 {
+            margin: 0 0 5px 0;
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+        
+        .header-text h2 {
+            margin: 0 0 8px 0;
+            font-size: 14pt;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+        
+        .header-text p {
+            margin: 2px 0;
+            font-size: 11pt;
+            line-height: 1.2;
+        }
+        
+        .document-title {
+            text-align: center;
+            margin: 25px 0 20px 0;
+        }
+        
+        .document-title h3 {
+            margin: 0;
+            font-size: 14pt;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        
+        .document-number {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 12pt;
+        }
+        
+        .content {
+            text-align: justify;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .content p {
+            margin: 0 0 10px 0;
+        }
+        
+        .student-info {
+            margin: 20px 0 20px 40px;
+        }
+        
+        .student-info table {
+            border-collapse: collapse;
+            width: auto;
+        }
+        
+        .student-info td {
+            padding: 4px 0;
+            vertical-align: top;
+        }
+        
+        .student-info td:first-child {
+            width: 180px;
+            font-weight: normal;
+        }
+        
+        .student-info td:nth-child(2) {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .student-info td:nth-child(3) {
+            min-width: 200px;
+        }
+        
+        .evaluation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .evaluation-table th,
+        .evaluation-table td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .evaluation-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            font-size: 11pt;
+        }
+        
+        .evaluation-table .criteria {
+            text-align: left;
+            width: 220px;
+            padding-left: 15px;
+        }
+        
+        .evaluation-table .number {
+            width: 40px;
+        }
+        
+        .evaluation-table .score {
+            width: 80px;
+        }
+        
+        .evaluation-table .remark {
+            width: 120px;
+        }
+        
+        .evaluation-table .average-row {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .signature-section {
+            margin-top: 30px;
+            text-align: right;
+        }
+        
+        .signature-content {
+            display: inline-block;
+            text-align: center;
+            margin-right: 80px;
+        }
+        
+        .signature-date {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .signature-date p {
+            margin: 2px 0;
+        }
+        
+        .signature-title {
+            margin-bottom: 80px;
+        }
+        
+        .signature-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .signature-nip {
+            font-size: 11pt;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .container {
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+        
+        /* Download button */
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        
+        .download-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn no-print" onclick="downloadAsWord()">Download sebagai Word</button>
+    
+    <div class="container">
+        <div class="header">
+            <div class="header-logo">
+                <div class="logo-placeholder">
+                    LOGO<br>
+                    PEMERINTAH<br>
+                    KOTA<br>
+                    SERANG
+                </div>
+            </div>
+            <div class="header-text">
+                <h1>PEMERINTAH KOTA SERANG</h1>
+                <h2>DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU</h2>
+                <p>Jl. Mayor Syafe'i No.3 Telp.(0254) 203720</p>
+                <p>Serang-Banten</p>
+                <p>Website: http://dpmptsp.serangkota.go.id | Email: dpmptsp@serangkota.go.id</p>
+            </div>
+        </div>
+        
+        <div class="document-title">
+            <h3>SURAT KETERANGAN</h3>
+        </div>
+        
+        <div class="document-number">
+            Nomor : 800/446/Sekret/DPMPTSP/III/2025
+        </div>
+        
+        <div class="content">
+            <p>Yang bertanda tangan di bawah ini, Kepala Dinas DPMPTSP (Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu) Kota Serang, menerangkan dengan sebenarnya, bahwa Mahasiswa di bawah ini :</p>
+        </div>
+        
+        <div class="student-info">
+            <table>
+                <tr>
+                    <td>NAMA</td>
+                    <td>:</td>
+                    <td>ADHITIYA AYU PUSPITASARI</td>
+                </tr>
+                <tr>
+                    <td>NPM</td>
+                    <td>:</td>
+                    <td>1102221035</td>
+                </tr>
+                <tr>
+                    <td>PROGRAM STUDI</td>
+                    <td>:</td>
+                    <td>TEKNIK INFORMATIKA</td>
+                </tr>
+                <tr>
+                    <td>PROGRAM PENDIDIKAN</td>
+                    <td>:</td>
+                    <td>STRATA 1</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="content">
+            <p>Telah melaksanakan Kuliah Kerja Praktek (PKN) / Observasi di Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu Kota Serang yang ditempatkan pada Bidang Pelayanan sejak <strong>17 Maret s/d 17 April 2025</strong></p>
+            
+            <p>Berdasarkan penilaian selama mahasiswa tersebut melakukan Praktek Kerja Nyata (PKN)/Observasi berkelakuan baik dan memperoleh nilai sbb:</p>
+        </div>
+        
+        <table class="evaluation-table">
+            <thead>
+                <tr>
+                    <th class="number">No</th>
+                    <th>Kriteria Penilaian</th>
+                    <th class="score">Nilai</th>
+                    <th class="remark">Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="number">1</td>
+                    <td class="criteria">Inisiatif</td>
+                    <td class="score">&nbsp;</td>
+                    <td class="remark">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="number">2</td>
+                    <td class="criteria">Dedikasi / Tanggung Jawab</td>
+                    <td class="score">&nbsp;</td>
+                    <td class="remark">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="number">3</td>
+                    <td class="criteria">Prestasi</td>
+                    <td class="score">&nbsp;</td>
+                    <td class="remark">&nbsp;</td>
+                </tr>
+                <tr class="average-row">
+                    <td colspan="2" style="text-align: center;"><strong>Rata-rata</strong></td>
+                    <td class="score">&nbsp;</td>
+                    <td class="remark">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="content">
+            <p>Demikian Surat Keterangan ini dibuat untuk dapat dipergunakan sebagaimana semestinya.</p>
+        </div>
+        
+        <div class="signature-section">
+            <div class="signature-content">
+                <div class="signature-date">
+                    <p>Ditetapkan di Serang</p>
+                    <p>Pada tanggal 11 Juni 2025</p>
+                </div>
+                
+                <div class="signature-title">
+                    <p>Kepala Dinas DPMPTSP Kota Serang</p>
+                </div>
+                
+                <div class="signature-name">
+                    <p><strong>H. RITADI, S.Sos., M.Si</strong></p>
+                </div>
+                <div class="signature-nip">
+                    <p>NIP. 196508241988011002</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadAsWord() {
+            // Remove the download button for the export
+            const btn = document.querySelector('.download-btn');
+            if (btn) btn.style.display = 'none';
+            
+            // Get the HTML content
+            const content = document.documentElement.outerHTML;
+            
+            // Create Word document structure
+            const wordDoc = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                      xmlns:w='urn:schemas-microsoft-com:office:word' 
+                      xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>Surat Keterangan DPMPTSP</title>
+                    <!--[if gte mso 9]>
+                    <xml>
+                        <w:WordDocument>
+                            <w:View>Print</w:View>
+                            <w:Zoom>90</w:Zoom>
+                            <w:DoNotPromptForConvert/>
+                            <w:DoNotShowInsertionsAndDeletions/>
+                        </w:WordDocument>
+                    </xml>
+                    <![endif]-->
+                    <style>
+                        @page {
+                            size: A4;
+                            margin: 2.5cm 2cm;
+                        }
+                        body {
+                            font-family: 'Times New Roman', serif;
+                            font-size: 12pt;
+                            line-height: 1.2;
+                        }
+                        .download-btn { display: none !important; }
+                    </style>
+                </head>
+                <body>
+                    ${document.querySelector('.container').outerHTML}
+                </body>
+                </html>
+            `;
+            
+            // Create blob and download
+            const blob = new Blob([wordDoc], {
+                type: 'application/msword'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Surat_Keterangan_ADHITIYA_AYU_PUSPITASARI.doc';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+        //   Show the button again  
+            if (btn) btn.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
